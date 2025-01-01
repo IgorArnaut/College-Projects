@@ -1,0 +1,31 @@
+<table
+  class="table table-borderless table-striped bg-dark border border-2 border-black mb-0"
+>
+  <thead class="table-light">
+    <tr>
+      <th>Sifra</th>
+      <th>Naziv</th>
+      <th>Cena</th>
+      <th>Kolicina</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let artikal of artikli">
+      <td>{{ artikal.sifra }}</td>
+      <td>{{ artikal.naziv }}</td>
+      <td>{{ artikal.cena }}</td>
+      <td>{{ artikal.kolicina }}</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="dopuniArtikal(artikal)"
+        >
+          Dopuni
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

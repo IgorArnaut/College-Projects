@@ -1,0 +1,70 @@
+<form
+  class="form border border-2 border-black text-bg-dark bg-gradient"
+  [formGroup]="kupovinaForma"
+  (ngSubmit)="kupi()"
+>
+  <div class="w-50 mx-auto">
+    <div>
+      <label for="novac" class="form-label fw-semibold">Ubacite novac:</label>
+      <input
+        id="novac"
+        type="number"
+        class="form-control rounded-0"
+        formControlName="novac"
+      />
+      <div *ngIf="novac?.invalid && (novac?.dirty || novac?.touched)">
+        <div *ngIf="novac?.errors?.['min'] || novac?.errors?.['max']">
+          Novac mora biti izmedju 10 i 200 din.
+        </div>
+        <div *ngIf="ukupno === 0" class="text-danger">
+          Novac mora biti ubacen.
+        </div>
+        <div *ngIf="novac?.value % 10 != 0" class="text-danger">
+          Novac mora biti u apoenima 10, 20, 50, 100 i 200.
+        </div>
+        <div *ngIf="ukupno === 0" class="text-danger">
+          Novac mora biti ubacen.
+        </div>
+        <div *ngIf="jeNedovoljno" class="text-danger">
+          Ubacen novac je nedovoljan.
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-3">
+      <button
+        class="btn btn-secondary bg-gradient rounded-0 fw-bold"
+        type="button"
+        (click)="ubaciNovac()"
+      >
+        Ubaci
+      </button>
+    </div>
+
+    <div mt-3>
+      <label for="sifra" class="form-label fw-semibold"
+        >Unesite sifru artikla:</label
+      >
+      <input
+        id="sifra"
+        type="number"
+        class="form-control rounded-0"
+        formControlName="sifra"
+      />
+      <div *ngIf="sifra?.invalid && (sifra?.dirty || sifra?.touched)">
+        <div *ngIf="sifra?.errors?.['required']" class="text-danger">
+          Sifra artikla mora biti uneta.
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-3">
+      <button
+        class="btn btn-primary bg-gradient rounded-0 fw-bold"
+        type="submit"
+      >
+        Kupi
+      </button>
+    </div>
+  </div>
+</form>

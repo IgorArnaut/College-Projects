@@ -1,0 +1,8 @@
+<table class="table table-borderless bg-dark border border-2 border-black mb-0">
+  <tr *ngFor="let red of artikli">
+    <td *ngFor="let artikal of red">
+      <app-artikal [artikal]="artikal" />
+    </td>
+  </tr>
+</table>
+<app-kupovina />
