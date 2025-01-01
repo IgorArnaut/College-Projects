@@ -1,25 +1,20 @@
-const express = require("express");
-const cors = require("cors");
+import express, { json, urlencoded } from "express";
+import cors from "cors";
+
+import { routes } from "./app/routes/product.routes.js";
 
 const app = express();
-
-var corsOptions = {
+const PORT = process.env.PORT || 8080;
+const corsOptions = {
   origin: "http://localhost:8081",
 };
 
 app.use(cors(corsOptions));
+app.use(json());
+app.use(urlencoded({ extended: true }));
 
-app.use(express.json());
+app.get("/", (req, res) => res.json({ message: "Dobrodošli." }));
 
-app.use(express.urlencoded({ extended: true }));
+routes.default(app);
 
-app.get("/", (req, res) => {
-  res.json({ message: "Dobrodosli." });
-});
-
-require("./app/routes/artikal.routes.js")(app);
-
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`Server je pokrenut na portu ${PORT}.`);
-});
+app.listen(PORT, () => console.log(`Server je pokrenut na portu ${PORT}.`));

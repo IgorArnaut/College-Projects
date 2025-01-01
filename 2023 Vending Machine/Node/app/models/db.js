@@ -1,16 +1,17 @@
-const mysql = require("mysql2");
-const dbConfig = require("../config/db.config.js");
+import { createConnection } from "mysql2";
 
-const connection = mysql.createConnection({
-  host: dbConfig.HOST,
-  user: dbConfig.USER,
-  password: dbConfig.PASSWORD,
-  database: dbConfig.DB,
+import { HOST, USER, PASSWORD, DB } from "../config/db.config.js";
+
+const connection = createConnection({
+  host: HOST,
+  user: USER,
+  password: PASSWORD,
+  database: DB,
 });
 
 connection.connect((error) => {
   if (error) throw error;
-  console.log("Uspesno povezivanje na bazu podataka.");
+  console.log("Uspešno povezivanje na bazu podataka.");
 });
 
-module.exports = connection;
+export default connection;
