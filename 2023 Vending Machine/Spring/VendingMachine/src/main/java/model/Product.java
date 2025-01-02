@@ -9,12 +9,16 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+import lombok.*;
+
 /**
  * The persistent class for the artikal database table.
  * 
  */
+@Data
 @Entity
 @Table(name = "products")
+@NoArgsConstructor
 public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -33,48 +37,5 @@ public class Product implements Serializable {
 
 	@Column(name = "image")
 	private String image;
-
-	public Product() {
-	}
-
-	public String getId() {
-		return this.id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public int getPrice() {
-		return this.price;
-	}
-
-	public void setPrice(int price) {
-		this.price = price;
-	}
-
-	public int getQty() {
-		return this.qty;
-	}
-
-	public void setQty(int qty) {
-		this.qty = qty;
-	}
-
-	public String getName() {
-		return this.name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getImage() {
-		return this.image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
-	}
 
 }
